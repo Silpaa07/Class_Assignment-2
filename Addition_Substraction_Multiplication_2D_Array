@@ -1,0 +1,66 @@
+//Write a C program to find addition,substraction, multiplication of 2D array.
+#include <stdio.h>
+
+int main() {
+    int rows, cols;
+    printf("Enter the number of rows and columns of the arrays:\n");
+    scanf("%d %d", &rows, &cols);
+
+    int arr1[rows][cols], arr2[rows][cols];
+    int sum[rows][cols], diff[rows][cols], prod[rows][cols];
+
+    printf("Enter the elements of the first array:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            scanf("%d", &arr1[i][j]);
+        }
+    }
+
+    printf("Enter the elements of the second array:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            scanf("%d", &arr2[i][j]);
+        }
+    }
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            sum[i][j] = arr1[i][j] + arr2[i][j];
+        }
+    }
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            diff[i][j] = arr1[i][j] - arr2[i][j];
+        }
+    }
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            prod[i][j] = arr1[i][j] * arr2[i][j];
+        }
+    }
+
+    printf("Sum of the arrays:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            printf("%d ", sum[i][j]);
+        }
+        printf("\n");
+    }
+
+    printf("Difference of the arrays:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            printf("%d ", diff[i][j]);
+        }
+        printf("\n");
+    }
+
+    printf("Product of the arrays:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            printf("%d ", prod[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
