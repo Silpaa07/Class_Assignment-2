@@ -1,0 +1,29 @@
+//Write a C program to check elements of 2 arrays are equal or not.
+#include <stdio.h>
+
+int main() {
+    int n;
+    printf("Enter the number of elements in the arrays:\n");
+    scanf("%d", &n);
+
+    int arr1[n], arr2[n];
+    printf("Enter the elements of the first array:\n");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr1[i]);
+    }
+
+    printf("Enter the elements of the second array:\n");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr2[i]);
+    }
+
+    for (int i = 0; i < n; i++) {
+        if (arr1[i] != arr2[i]) {
+            printf("The arrays are not equal.\n");
+            return 0;
+        }
+    }
+
+    printf("The arrays are equal.\n");
+    return 0;
+}
