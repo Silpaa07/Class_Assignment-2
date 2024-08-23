@@ -1,0 +1,26 @@
+//Write a C program to print all the even numbers from an array.
+#include<stdio.h>
+int main()
+{
+    int n;
+    printf("Enter the number of array elements:\n");
+    scanf("%d",&n);
+    int arr[n];
+    printf("Enter the array elements:\n");
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    printf("The even numbers are:\n");
+    for(int i=0;i<n;i++)
+    {
+        if(arr[i]%2==0)
+        {
+            printf("%d\n",arr[i]);
+        }
+        else
+        {
+            continue;
+        }
+    }
+}
