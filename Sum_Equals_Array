@@ -1,0 +1,30 @@
+//Write a C program to check whether the sums of two arrays are equal or not.
+#include<stdio.h>
+int main()
+{
+    int n,sum1=0,sum2=0;
+    printf("Enter the number of array elements:\n");
+    scanf("%d",&n);
+    int arr1[n],arr2[n];
+    printf("Enter the elements of the first array:\n");
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&arr1[i]);
+    }
+     printf("Enter the elements of the second array:\n");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr2[i]);
+    }
+    for(int i=0;i<n;i++)
+    {
+        sum1=sum1+arr1[i];
+        sum2=sum2+arr2[i];
+    }
+    if(sum1==sum2)
+    {
+        printf("The sums of the two arrays are equal!\n");
+    }
+    else
+    printf("The sums of the two arrays are not equal!\n");
+
+}
