@@ -1,0 +1,52 @@
+//Write a C program to find the positive root of the equation x^3-3x+1.06=0 by the method of bisection correct to 3 decimal places and print the function value for the root.
+#include<stdio.h>
+#include<math.h>
+double f(double x)
+{
+	return x*x*x-3*x+1.06;	
+	}
+	int main()
+	{
+		double a,b,c,fa,fb,fc,EPS;
+		int i=0;
+		printf("Enter the initial guess of a:\n");
+		scanf("%lf",&a);
+		printf("Enter the initial guess of b:\n");
+		scanf("%lf",&b);
+		printf("Enter the error threshold:\n");
+		scanf("%lf",&EPS);
+		fa=f(a);
+		fb=f(b);
+		if(fa*fb>=0)
+		{
+			printf("Invalid initial guesses.f(a) and f(b) have opposite signs.\n");
+			return -1;
+		}
+			printf("Iteration\tValue of a\tValue of b\t Value of c\tValue of function:f(c)\n");
+			while((b-a)>=EPS)
+			{
+				c=(a+b)/2;
+				fc=f(c);
+				if(fabs(fc)<=EPS)
+				{
+					break;
+				}
+				if(fa*fc<0)
+				{
+					b=c;
+					fb=fc;
+				}
+				else
+				{
+					a=c;
+					fa=fc;
+				}
+				i++;
+				printf("%d\t\t%.5lf\t\t%.5lf\t\t%.5lf\t\t%.6lf\n",i,a,b,c,f(c));
+
+			}
+			 printf("The root of the equation is: %.5lf\n", c);
+             printf("The value of the function in the given root:%.6lf\n",f(c));
+
+			return 0;
+		}
