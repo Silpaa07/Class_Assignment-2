@@ -1,0 +1,59 @@
+//Wrire a C program to find a positive root of the equation X^3-3X+1.06=0 by the method of Bisection correct to 3 decimal places.
+#include <stdio.h>
+#include <math.h>
+
+// Define the function for which you want to find the root
+double f(double x) {
+    // Example: f(x) = x^3 - 3x + 1.06
+    // Modify this function based on the equation you want to solve
+    return x * x * x - 3 * x + 1.06;
+}
+
+int main() {
+    double a, b, c, fa, fb, fc, EPS;
+
+    // Input for the interval [a, b]
+    printf("Enter the initial guess for a: ");
+    scanf("%lf", &a);
+    printf("Enter the initial guess for b: ");
+    scanf("%lf", &b);
+
+    // Input the error threshold (tolerance level)
+    printf("Enter the error threshold (e.g., 0.001 for 3 decimal places): ");
+    scanf("%lf", &EPS);
+
+    // Check if f(a) and f(b) have opposite signs
+    fa = f(a);
+    fb = f(b);
+
+    if (fa * fb >= 0) {
+        printf("Invalid initial guesses. f(a) and f(b) must have opposite signs.\n");
+        return -1;
+    }
+
+    // Bisection method loop
+    while ((b - a) >= EPS) {
+        // Calculate midpoint c
+        c = (a + b) / 2;
+        fc = f(c);
+
+        // Check if the root is found (if fc is close enough to 0)
+        if (fabs(fc) <= EPS) {
+            break;
+        }
+
+        // If f(a) * f(c) < 0, then the root is between a and c
+        if (fa * fc < 0) {
+            b = c;
+            fb = fc;
+        } else { // Otherwise, the root is between c and b
+            a = c;
+            fa = fc;
+        }
+    }
+
+    // The root is approximately at c
+    printf("The root of the equation is: %.3lf\n", c);
+
+    return 0;
+}
