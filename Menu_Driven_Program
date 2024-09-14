@@ -75,7 +75,6 @@ void display() {
 int isFull() {
     return top == MAX - 1;
 }
-// Function to check if the stack is empty
 int isEmpty() {
     return top == -1;
 }
