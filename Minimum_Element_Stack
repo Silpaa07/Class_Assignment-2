@@ -1,0 +1,84 @@
+//Write a C program to find the minimum element in a stack.
+//Expected Output:
+//Current stack elements:
+//4 2 4 2 9 
+//Minimum element: 2
+//After removing two elements:
+//Current stack elements:
+//4 2 9 
+//Minimum element: 2
+//After adding one element:
+//Current stack elements:
+//1 4 2 9 
+//Minimum element: 1
+
+#include <stdio.h>
+#include <stdlib.h>
+#define MAX 100 
+int stack[MAX], top = -1;
+void push(int element);
+int pop();
+void display();
+int findMin();
+int main() {
+    push(9);
+    push(2);
+    push(4);
+    push(2);
+    push(4);
+ printf("Current stack elements:\n");
+    display();
+    int min = findMin();
+    printf("Minimum element: %d\n", min);
+    pop();
+    pop();
+    printf("After removing two elements:\n");
+    printf("Current stack elements:\n");
+    display();
+    min = findMin();
+    printf("Minimum element: %d\n", min);
+    push(1);
+    printf("After adding one element:\n");
+    printf("Current stack elements:\n");
+    display();
+    min = findMin();
+    printf("Minimum element: %d\n", min);
+    return 0;
+}
+void push(int element) {
+    if (top == MAX - 1) {
+        printf("Stack Overflow! Cannot push element.\n");
+        return;
+    }
+    stack[++top] = element;
+}
+int pop() {
+    if (top == -1) {
+        printf("Stack Underflow! No element to pop.\n");
+        return -1;
+    }
+    return stack[top--];
+}
+void display() {
+    if (top == -1) {
+        printf("Stack is empty.\n");
+        return;
+    }
+    for (int i = top; i >= 0; i--) {
+        printf("%d ", stack[i]);
+    }
+    printf("\n");
+}
+int findMin() {
+    if (top == -1) {
+        printf("Stack is empty, no elements to find minimum.\n");
+        return -1;
+    }
+ int min = stack[0];
+    for (int i = 1; i <= top; i++) {
+        if (stack[i] < min) {
+            min = stack[i];
+        }
+    }
+ return min;
+}
