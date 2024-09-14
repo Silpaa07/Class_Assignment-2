@@ -1,0 +1,72 @@
+//Write a C program to calculate the average value of the stack elements.
+//Expected Output:
+//Elements of the stack:
+//6 4 2 5 3 1
+//Average of the said stack values: 3.50
+//Popped value: 6
+//Elements of the stack:
+//3 5 2 4 6 
+//Average of the said stack values:  4.00
+
+#include <stdio.h>
+#include <stdlib.h>
+#define MAX 100  
+int stack[MAX], top = -1;
+void push(int element);
+int pop();
+void display();
+float calculateAverage();
+int main() {
+    push(6);
+    push(4);
+    push(2);
+    push(5);
+    push(3);
+    push(1);
+ printf("Elements of the stack:\n");
+    display();
+ float avg = calculateAverage();
+    printf("Average of the said stack values: %.2f\n", avg);
+int poppedValue = pop();
+    printf("Popped value: %d\n", poppedValue);
+ printf("Elements of the stack:\n");
+    display();
+ avg = calculateAverage();
+    printf("Average of the said stack values: %.2f\n", avg);
+ return 0;
+}
+void push(int element) {
+    if (top == MAX - 1) {
+        printf("Stack Overflow! Cannot push element.\n");
+        return;
+    }
+    stack[++top] = element;
+}
+int pop() {
+    if (top == -1) {
+        printf("Stack Underflow! No element to pop.\n");
+        return -1;
+    }
+    return stack[top--];
+}
+void display() {
+    if (top == -1) {
+        printf("Stack is empty.\n");
+        return;
+    }
+    for (int i = top; i >= 0; i--) {
+        printf("%d ", stack[i]);
+    }
+    printf("\n");
+}
+float calculateAverage() {
+    if (top == -1) {
+        printf("Stack is empty, no elements to calculate average.\n");
+        return 0.0;
+    }
+ int sum = 0;
+    for (int i = 0; i <= top; i++) {
+        sum += stack[i];
+    }
+return (float)sum / (top + 1);
+}
